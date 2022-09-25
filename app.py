@@ -12,7 +12,7 @@ def handle_message(msg):
 
 @app.route('/')
 def index():
-	return "Working"
+	return render_template("index")
 
 if __name__ == '__main__':
 	socketio.run(app, host="192.168.0.112")
