@@ -1,5 +1,6 @@
 from flask import Flask, render_template
 from flask_socketio import SocketIO, send
+import socket
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'mysecret'
@@ -12,7 +13,7 @@ def handle_message(msg):
 
 @app.route('/')
 def index():
-	return render_template("index.html")
+	return render_template("index.html") + f"Use of ip {socket.gethostbyname(socket.gethostname())}"
 
 if __name__ == '__main__':
-	socketio.run(app, host="192.168.0.112")
+	socketio.run(app, host="localhost")
